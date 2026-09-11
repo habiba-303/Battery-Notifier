@@ -13,7 +13,20 @@ while True:
 
     print(f"Battery : {percent}% | Charger : {plugged}")
 
-    if percent <= 30 and not plugged:
+    if percent <= 15 and not plugged:
+
+        if not notified:
+                notification = Notification(
+                    app_id = "Battery Monitor",
+                    title = "Battery Low",
+                    msg = f"{percent}% Battery Remaining!"
+                )
+        
+                winsound.MessageBeep(winsound.MB_ICONHAND)
+                notification.show()
+                notified = True
+            
+    elif percent <= 30 and not plugged:
 
         if not notified:
             notification = Notification(
@@ -26,18 +39,6 @@ while True:
             notification.show()
             notified = True
 
-    elif percent == 79 and  plugged:
-
-        if not notified:
-                notification = Notification(
-                    app_id = "Battery Monitor",
-                    title = "Battery Low",
-                    msg = f"{percent}% Battery Remaining!"
-                )
-        
-                winsound.MessageBeep(winsound.MB_ICONHAND)
-                notification.show()
-                notified = True
 
     else:
         notified = False
