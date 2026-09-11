@@ -1,5 +1,8 @@
 libraries required:
 - psutil
-- time
+- time  
 - winotify
 - winsound
+
+Note :
+- time and winsound are built-in Python modules and do not require installation.
